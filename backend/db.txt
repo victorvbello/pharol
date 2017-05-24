@@ -1,0 +1,7 @@
+CREATE KEYSPACE mysongs WITH REPLICATION = { 'class' : 'SimpleStrategy', 'replication_factor' : 3 };
+
+CREATE TABLE user (id uuid,name varchar, password varchar,PRIMARY KEY (id,name));
+
+INSERT INTO user (id,name,password) VALUES (now(),'admin','123456');
+
+CREATE TABLE playlist (id uuid,name varchar,songs list<text>, iduser uuid, PRIMARY KEY (id,iduser));
